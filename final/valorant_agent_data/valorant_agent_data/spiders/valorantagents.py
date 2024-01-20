@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 class AgentsSpider(scrapy.Spider):
     name = 'agents'
     allowed_domains = ['tracker.gg']
-    start_urls = ['https://tracker.gg/valorant/insights/agents?map=icebox']
+    start_urls = ['https://tracker.gg/valorant/insights/agents?map=breeze']
 
     def parse(self, response):
         agent_names = response.css('div.st__item--sticky div.value::text').extract()
@@ -21,7 +21,7 @@ class AgentsSpider(scrapy.Spider):
         plt.ylabel('Win Rate (%)')
         plt.title('Win Rate of Valorant Agents')
         plt.xticks(rotation=45, ha='right')  # 旋转 x 轴标签，使其更容易阅读
-        plt.title('Custom Title: Win Rate of Valorant Agents in icebox(base on tier)', fontsize=16, fontweight='bold', color='blue')
+        plt.title('Custom Title: Win Rate of Valorant Agents in breeze(base on tier)', fontsize=16, fontweight='bold', color='blue')
 
         # 在每个条形上方显示具体数值
         for bar, win_rate in zip(bars, win_rates):
